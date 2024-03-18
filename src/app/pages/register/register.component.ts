@@ -20,7 +20,9 @@ constructor(private auth:AuthService){}
 
 register(){
   const regInfo = {"nombres":this.nombres,"apellidos":this.apellidos,"username":this.username,"password":this.password}
-  console.log(this.auth.register(regInfo));
+  this.auth.register(regInfo).subscribe(data=>{
+    console.log(data)
+  })
 }
 
 }

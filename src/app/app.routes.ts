@@ -1,3 +1,33 @@
 import { Routes } from '@angular/router';
+import { NotesComponent } from './pages/notes/notes.component';
+import { AboutComponent } from './pages/about/about.component';
+import { RegisterComponent } from './pages/register/register.component';
+import { LoginComponent } from './pages/login/login.component';
 
-export const routes: Routes = [];
+export const routes: Routes = [
+    {
+        path:'notes',
+        title:'NOTES',
+        component:NotesComponent
+    },
+    {
+        path:'about',
+        title:'ABOUT',
+        component:AboutComponent
+    },
+    {
+        path:'login',
+        title:'LOGIN',
+        component:LoginComponent
+    },
+    {
+        path:'register',
+        title:'REGISTER',
+        component:RegisterComponent
+    },
+    {
+        path:'',
+        redirectTo:'/notes',
+        pathMatch:'full'
+    }
+];

@@ -1,0 +1,12 @@
+<div class="max-w-md mx-auto bg-white p-8 rounded shadow-md">
+    <h1 class="text-2xl font-bold mb-4">Rick and Morty Characters</h1>
+    <div *ngIf="results.length > 0" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+      <div *ngFor="let character of results" class="bg-gray-200 p-4 rounded shadow">
+        <img [src]="character.image" [alt]="character.name" class="w-full h-auto mb-2 rounded">
+        <p class="text-lg font-semibold">{{ character.name }}</p>
+        <p>Species: {{ character.species }}</p>
+        <p>Status: {{ character.status }}</p>
+      </div>
+    </div>
+  </div>
+  

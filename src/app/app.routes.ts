@@ -6,8 +6,8 @@ import { LoginComponent } from './pages/login/login.component';
 
 export const routes: Routes = [
     {
-        path:'notes',
-        title:'NOTES',
+        path:'tasks',
+        title:'TASKS',
         component:NotesComponent
     },
     {
@@ -27,7 +27,7 @@ export const routes: Routes = [
     },
     {
         path:'',
-        redirectTo:'/notes',
+        redirectTo:'/tasks',
         pathMatch:'full'
     }
 ];

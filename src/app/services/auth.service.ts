@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { enviroment } from '../enviroments/enviroments';
 import { HttpClient } from '@angular/common/http';
-import { Observable, catchError, of } from 'rxjs';
+import { BehaviorSubject, Observable, catchError, of } from 'rxjs';
 import { Login } from '../interfaces/login';
 import { Register } from '../interfaces/register';
 @Injectable({
@@ -9,7 +9,9 @@ import { Register } from '../interfaces/register';
 })
 export class AuthService {
 
-  logged:boolean=false;
+  private loggedSubject = new BehaviorSubject<boolean>(false);
+  private logged$ = this.loggedSubject.asObservable();
+  private token: string ="";
 
   constructor(private http:HttpClient){
 
@@ -25,12 +27,28 @@ export class AuthService {
   }
   
   register(registerInfo:{}):Observable<Register|undefined>{
-    return this.http.post<Register>(enviroment.authUrl,registerInfo).pipe(
+    return this.http.post<Register>(enviroment.registerUrl,registerInfo).pipe(
       catchError((error)=>{
         console.log(error)
         return of(undefined)
       })
     )
+  }
+
+  setLogged(isLoggued:boolean){
+    this.loggedSubject.next(isLoggued);
+  }
+
+  isLogged(){
+    return this.logged$
+  }
+
+  setToken(token:any){
+    this.token=token
+  }
+
+  getToken(){
+    return this.token
   }
 
 }

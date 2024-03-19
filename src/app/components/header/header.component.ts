@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { RouterLink, RouterLinkActive } from '@angular/router';
+import { Router, RouterLink, RouterLinkActive } from '@angular/router';
 import { AuthService } from '../../services/auth.service';
 import { CommonModule } from '@angular/common';
 
@@ -14,7 +14,7 @@ export class HeaderComponent implements OnInit{
   
   isLogged:boolean=false
 
-  constructor(private auth:AuthService){}
+  constructor(private auth:AuthService,private route:Router){}
 
   ngOnInit(): void {
     this.auth.isLogged().subscribe(logged=>{
@@ -27,6 +27,7 @@ export class HeaderComponent implements OnInit{
       this.auth.setToken("")
       this.auth.setLogged(false)
       sessionStorage.removeItem("token")
+      this.route.navigate(["/about"]);
     })
   }
 

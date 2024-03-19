@@ -37,7 +37,7 @@ export class AuthService {
   }
 
   logout():Observable<any>{
-    return this.http.get<any>(`${enviroment.hostUrl}/logout`).pipe(
+    return this.http.get<any>(`${enviroment.hostUrl}/auth/logout`).pipe(
       catchError((error)=>{
         return of(undefined)
       })

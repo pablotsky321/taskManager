@@ -28,6 +28,7 @@ export class LoginComponent {
         this.auth.setToken(data.token)
         this.auth.setLogged(true)
         this.auth.setIdUser(data.id_user)
+        sessionStorage.setItem("token",this.auth.getToken())
         this.route.navigate(['/tasks'])
       }
     })

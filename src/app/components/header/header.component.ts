@@ -26,6 +26,7 @@ export class HeaderComponent implements OnInit{
     this.auth.logout().subscribe(data=>{
       this.auth.setToken("")
       this.auth.setLogged(false)
+      sessionStorage.removeItem("token")
     })
   }
 

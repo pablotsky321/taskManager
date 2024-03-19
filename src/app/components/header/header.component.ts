@@ -22,4 +22,11 @@ export class HeaderComponent implements OnInit{
     });
   }
 
+  logout(){
+    this.auth.logout().subscribe(data=>{
+      this.auth.setToken("")
+      this.auth.setLogged(false)
+    })
+  }
+
 }

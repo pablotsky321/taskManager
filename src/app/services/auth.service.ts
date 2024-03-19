@@ -35,8 +35,16 @@ export class AuthService {
     )
   }
 
-  setLogged(isLoggued:boolean){
-    this.loggedSubject.next(isLoggued);
+  logout():Observable<any>{
+    return this.http.get<any>(`${enviroment.hostUrl}/logout`).pipe(
+      catchError((error)=>{
+        return of(undefined)
+      })
+    )
+  }
+
+  setLogged(isLogged:boolean){
+    this.loggedSubject.next(isLogged);
   }
 
   isLogged(){

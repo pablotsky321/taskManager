@@ -1,40 +1,28 @@
-<body class="bg-gray-100">
-    <div class="container mx-auto p-8">
-      <h1 *ngIf="isLogged" class="text-3xl font-bold mb-4">Tareas</h1>
-      <!-- Lista de tareas -->
-      <div *ngIf="isLogged" class="space-y-4">
-        <!-- Ejemplo de una tarea -->
-        <div class="flex items-center justify-between bg-white p-4 rounded-lg shadow-md">
-          <div>
-            <p class="text-lg font-semibold">Tarea 1</p>
-            <p class="text-gray-500">Descripción de la tarea 1</p>
-          </div>
-          <div class="space-x-2">
-            <button class="px-4 py-2 bg-blue-500 text-white rounded-lg">Actualizar</button>
-            <button class="px-4 py-2 bg-red-500 text-white rounded-lg">Eliminar</button>
-            <button class="px-4 py-2 bg-green-500 text-white rounded-lg">Marcar como finalizada</button>
-          </div>
-        </div>
-  
-        <!-- Ejemplo de otra tarea -->
-        <div class="flex items-center justify-between bg-white p-4 rounded-lg shadow-md">
-          <div>
-            <p class="text-lg font-semibold">Tarea 2</p>
-            <p class="text-gray-500">Descripción de la tarea 2</p>
-          </div>
-          <div class="space-x-2">
-            <button class="px-4 py-2 bg-blue-500 text-white rounded-lg">Actualizar</button>
-            <button class="px-4 py-2 bg-red-500 text-white rounded-lg">Eliminar</button>
-            <button class="px-4 py-2 bg-green-500 text-white rounded-lg">Marcar como finalizada</button>
-          </div>
-        </div>
+<div class="max-w-xl mx-auto mt-8">
+  <div *ngIf="isLogged" class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
+    <h2 class="text-lg font-semibold mb-4">Tareas del usuario</h2>
+    <!-- Lista de tareas -->
+    <!-- espacio para ngfor -->
+    <div class="border-b border-gray-200 py-4 flex justify-between items-center">
+      <div>
+        <h3 class="text-xl font-semibold">tarea</h3>
+        <p class="text-gray-500 text-xs">Fecha de creación: fecha_creacion</p>
       </div>
-      <div *ngIf="isLogged" class="mt-8">
-        <button class="px-4 py-2 bg-blue-500 text-white rounded-lg">Agregar Tarea</button>
+      <div class="flex space-x-4">
+        <!-- Botón para ver detalles -->
+        <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Detalles</button>
+        <!-- Botón para eliminar -->
+        <button class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded">Eliminar</button>
+        <!-- Otro botón para alguna acción -->
+        <button class="bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded">Otra acción</button>
       </div>
-      <div *ngIf="!isLogged" class="bg-yellow-100 border-l-4 border-yellow-500 text-yellow-700 p-4" role="alert">
-        <p class="font-bold">Advertencia</p>
-        <p>Debe iniciar sesión para agregar y ver tareas.</p>
-      </div>      
     </div>
-  </body>
+    <div class="mt-4">
+      <button class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded">Agregar Tarea</button>
+    </div>
+  </div>
+  <div *ngIf="!isLogged" class="bg-yellow-100 border-l-4 border-yellow-500 text-yellow-700 p-4" role="alert">
+    <p class="font-bold">Advertencia</p>
+    <p>Debe iniciar sesión para agregar y ver tareas.</p>
+  </div>
+</div>

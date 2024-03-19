@@ -27,6 +27,7 @@ export class LoginComponent {
       }else{
         this.auth.setToken(data.token)
         this.auth.setLogged(true)
+        this.auth.setIdUser(data.id_user)
         this.route.navigate(['/tasks'])
       }
     })

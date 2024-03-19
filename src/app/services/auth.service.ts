@@ -12,6 +12,7 @@ export class AuthService {
   private loggedSubject = new BehaviorSubject<boolean>(false);
   private logged$ = this.loggedSubject.asObservable();
   private token: string ="";
+  private id_user: string ="";
 
   constructor(private http:HttpClient){
 
@@ -57,6 +58,14 @@ export class AuthService {
 
   getToken(){
     return this.token
+  }
+
+  setIdUser(id_user:string){
+    this.id_user = id_user
+  }
+
+  getIdUser(){
+    return this.id_user
   }
 
 }

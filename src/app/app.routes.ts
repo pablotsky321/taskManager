@@ -12,9 +12,14 @@ export const routes: Routes = [
         component:NotesComponent,
     },
     {
-        path:'add_task',
-        title:'ADD_TASK',
-        component:FormTaskComponent
+        path:'tasks',
+        children:[
+            {
+                path:'add_task',
+                title:'TASKS | ADD_TASK',
+                component:FormTaskComponent
+            },
+        ]
     },
     {
         path:'about',

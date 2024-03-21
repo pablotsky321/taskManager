@@ -14,7 +14,7 @@ export class TaskService {
   constructor(private http:HttpClient,private auth:AuthService,private headers:HeaderRequestService) { }
 
   addTask(id_user:string,task:{}):Observable<Task | undefined>{
-    return this.http.put<Task>(`${enviroment.taskUrl}/add/${this.auth.getIdUser()}`,task,{headers:this.headers.getHeader()}).pipe(
+    return this.http.post<Task>(`${enviroment.taskUrl}/add/${this.auth.getIdUser()}`,task,{headers:this.headers.getHeader()}).pipe(
       catchError((error)=>{
         console.log(error)
         return of(undefined)
@@ -23,9 +23,17 @@ export class TaskService {
   }
   
   showTasks(id_user:string):Observable<Task[] | undefined>{
-    return this.http.get<Task[]>(`${enviroment.taskUrl}/user_tasks/${id_user}`,{headers:this.headers.getHeader()}).pipe(
+    return this.http.get<Task[]>(`${enviroment.taskUrl}/show/${id_user}`,{headers:this.headers.getHeader()}).pipe(
       catchError((error)=>{
         console.log(error)
+        return of(undefined)
+      })
+    )
+  }
+
+  deleteTask(id_task:string):Observable<string | undefined>{
+    return this.http.delete<string>(`${enviroment.taskUrl}/delete/${id_task}`,{headers:this.headers.getHeader()}).pipe(
+      catchError((error)=>{
         return of(undefined)
       })
     )

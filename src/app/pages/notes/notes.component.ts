@@ -25,10 +25,20 @@ export class NotesComponent implements OnInit {
     if (!this.isLogged) {
 
     } else {
-      this.task.showTasks(this.auth.getIdUser()).subscribe(data => {
-        this.tasks = data as any[]
-      })
+      this.actualizar()
     }
+  }
+
+  deleteTask(id_task: string) {
+    this.task.deleteTask(id_task).subscribe(data => {
+      this.actualizar()
+    })
+  }
+
+  actualizar() {
+    this.task.showTasks(this.auth.getIdUser()).subscribe(data => {
+      this.tasks = data as any[]
+    })
   }
 
 }

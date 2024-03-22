@@ -21,10 +21,8 @@ export class FormTaskComponent {
 
   addTask(){
     const new_date = new Date(this.fecha_finalizacion)
-    const date_info = new_date.toISOString
-    const task={"titulo":this.titulo, "descripcion":this.descripcion, "fecha_finalizacion":date_info}
+    const task={titulo:this.titulo, descripcion:this.descripcion, fecha_finalizacion:new_date.toISOString}
     this.task.addTask(this.auth.getIdUser(),task).subscribe(data=>{
-      console.log(data)
       this.route.navigate(["/tasks"])
     })
   }

@@ -6,6 +6,7 @@ import { LoginComponent } from './pages/login/login.component';
 import { FormTaskComponent } from './pages/form-task/form-task.component';
 import { HomeComponent } from './pages/home/home.component';
 import { NotFoundComponent } from './pages/not-found/not-found.component';
+import { TaskDetailComponent } from './pages/task-detail/task-detail.component';
 
 export const routes: Routes = [
     {
@@ -26,6 +27,11 @@ export const routes: Routes = [
                 title:'TASKS | ADD_TASK',
                 component:FormTaskComponent
             },
+            {
+                path:'detail/:id_task',
+                title:'TASK DETAILS',
+                component:TaskDetailComponent
+            }
         ]
     },
     {

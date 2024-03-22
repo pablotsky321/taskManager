@@ -6,5 +6,4 @@ export interface Task {
     fecha_finalizacion: string;
     finalizada:         boolean;
     estado:             string;
-    userEntity:         null;
 }

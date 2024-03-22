@@ -39,4 +39,19 @@ export class TaskService {
     )
   }
 
+  detailTask(id_task:string):Observable<Task | undefined>{
+    return this.http.get<Task>(`${enviroment.taskUrl}/details/${id_task}`,{headers:this.headers.getHeader()}).pipe(
+      catchError((error)=>{
+        return of(undefined)
+      })
+    )
+  }
+  
+  updateTask(id_task:string,taskInfo:{}):Observable<Task | undefined>{
+    return this.http.put<Task>(`${enviroment.taskUrl}/update/${id_task}`,taskInfo,{headers:this.headers.getHeader()}).pipe(
+      catchError((error)=>{
+        return of(undefined)
+      })
+    )
+  }
 }

@@ -7,8 +7,11 @@
         <p class="text-gray-500 text-xs">{{task.fecha_creacion}}</p>
       </div>
       <div class="flex space-x-4">
+        <input type="checkbox" class="form-checkbox h-5 w-5 text-green-500" [(ngModel)]="task.finalizada" disabled>
+        <span class="text-gray-700">Completada</span>
         <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" (click)="seeTask(task.id)">Detalles</button>
         <button class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded" (click)="deleteTask(task.id)">Eliminar</button>
+        <button class="bg-yellow-500 hover:bg-yellow-700 text-white font-bold py-2 px-4 rounded" (click)="finishTask(task.id)">Cambiar estado</button>
       </div>
     </div>
     <div class="mt-4">

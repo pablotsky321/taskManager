@@ -3,11 +3,12 @@ import { CommonModule } from '@angular/common';
 import { AuthService } from '../../services/auth.service';
 import { Router, RouterLink, RouterLinkActive } from '@angular/router';
 import { TaskService } from '../../services/task.service';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-notes',
   standalone: true,
-  imports: [CommonModule, RouterLinkActive, RouterLink],
+  imports: [CommonModule, RouterLinkActive, RouterLink, FormsModule],
   templateUrl: './notes.component.html',
   styleUrl: './notes.component.css'
 })
@@ -15,8 +16,9 @@ export class NotesComponent implements OnInit {
 
   isLogged: boolean = false
   tasks: any[] = []
+  finished!: boolean
 
-  constructor(private auth: AuthService, private task: TaskService,private router:Router) { }
+  constructor(private auth: AuthService, private task: TaskService, private router: Router) { }
 
   ngOnInit(): void {
     this.auth.isLogged().subscribe(logged => {
@@ -41,8 +43,17 @@ export class NotesComponent implements OnInit {
     })
   }
 
-  seeTask(id_task:string){
-    this.router.navigate(['tasks/detail',id_task])
+  seeTask(id_task: string) {
+    this.router.navigate(['tasks/detail', id_task])
+  }
+
+  finishTask(id_task: string) {
+
+    this.task.detailTask(id_task).subscribe(data=>{
+      this.task.finishedTask(id_task, { finished: !data?.finalizada}).subscribe(data => {
+        this.cargar()
+      }) 
+    })
   }
 
 }

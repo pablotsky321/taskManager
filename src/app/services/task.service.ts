@@ -54,4 +54,14 @@ export class TaskService {
       })
     )
   }
+
+  finishedTask(id_task:string,taskFi:{}):Observable<any>{
+    return this.http.put<any>(`${enviroment.taskUrl}/finished/${id_task}`,taskFi,{headers:this.headers.getHeader()}).pipe(
+      catchError((error)=>{
+        console.log(error)
+        return of(undefined)
+      })
+    )
+  }
+
 }
